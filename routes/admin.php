@@ -13,3 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/admin', function (){
+    return view('admin.dashboard');
+});
+
+Route::group(['prefix' => 'admin' , 'middleware' =>'guest:admin'],function(){
+  //  Route::get('login',
+});
+
+
