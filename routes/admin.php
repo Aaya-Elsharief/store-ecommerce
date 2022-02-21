@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\MainCategoriesController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
 
@@ -21,6 +22,9 @@ Route::group([ 'namespace' => 'admin', 'middleware' =>'auth:admin'],function(){
 
     Route::get('/',[DashbordController::class, 'index']) -> name('admin.dashboard');
 
+    Route::get('helper-n',function (){
+        return show();
+    });
     ########################## Begin Languages Routes #############################
     Route::group(['prefix' => 'languages'], function(){
 
@@ -35,10 +39,25 @@ Route::group([ 'namespace' => 'admin', 'middleware' =>'auth:admin'],function(){
 
 
     });
+    ########################## End  Languages Routes #############################
 
 
-    ########################## End Languages Routes #############################
+    ########################## Begin Main Categories  Routes #############################
+    Route::group(['prefix' => 'main_categories'], function(){
 
+        Route::get('/',[MainCategoriesController::class, 'index']) -> name('admin.maincategories'); //all languages
+        Route::get('create',[MainCategoriesController::class, 'create']) -> name('admin.maincategories.create');
+        Route::post('store',[MainCategoriesController::class, 'store']) -> name('admin.maincategories.store');
+
+        Route::get('edit/{id}',[MainCategoriesController::class, 'edit']) -> name('admin.maincategories.edit');
+        Route::post('update/{id}',[MainCategoriesController::class, 'update']) -> name('admin.maincategories.update');
+
+        Route::get('delete/{id}',[MainCategoriesController::class, 'destroy']) -> name('admin.maincategories.delete');
+
+
+    });
+
+    ########################## End Main Categories Routes#############################
 
 });
 
