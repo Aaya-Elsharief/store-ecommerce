@@ -5,14 +5,15 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title"> اللغات </h3>
+                    <h3 class="content-header-title"> الأقسام الرئيسية </h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية </a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.languages')}}"> اللغات </a>
-                                </li>
+                                    <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية </a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="{{route('admin.maincategories')}}"> الأقسام الرئيسية </a>
+                                    </li>
+
                             </ol>
                         </div>
                     </div>
@@ -26,7 +27,7 @@
                             <div class="card">
                                 <div class="card-header">
 
-                                    <h4 class="form-section">جميع لغات الموقع </h4>
+                                    <h4 class="form-section">جميع الأقسام الرئيسية </h4>
                                     <hr style="height:2px;border-width:0;color:gray;background-color:Dimgrey">
 
                                     <a class="heading-elements-toggle"><i
@@ -47,33 +48,33 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         <table
-                                            class="table display nowrap table-striped table-bordered ">
+                                            class="table display nowrap table-striped table-bordered scroll-horizontal ">
                                             <thead>
                                             <tr>
-                                                <th> الاسم</th>
-                                                <th>الاختصار</th>
-                                                <th>اتجاه</th>
+                                                <th> صورة القسم </th>
+                                                <th> القسم</th>
+                                                <th> اللغة</th>
                                                 <th>الحالة</th>
                                                 <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($languages)
-                                                @foreach($languages as $language)
+                                            @isset($categories)
+                                                @foreach($categories as $category)
                                                      <tr>
-                                                        <td>{{$language -> name}} </td>
-                                                        <td> {{$language -> abbr}} </td>
-                                                        <td>{{$language -> direction}} </td>
-                                                        <td>{{$language -> getActive()}} </td>
+                                                         <td><img style="width: 100px; height: 100px" src="{{$category -> photo}}"></td>
+                                                         <td>{{$category -> name}} </td>
+                                                        <td> {{$category -> translation_lang}} </td>
+                                                        <td>{{$category -> getActive()}} </td>
                                                         <td>
 
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{route('admin.languages.edit',$language -> id)}}"
+                                                                <a href="{{route('admin.maincategories.edit',$category -> id)}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
 
-                                                                <a href="{{route('admin.languages.delete',$language -> id)}}"
+                                                                <a href=""
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
 
 

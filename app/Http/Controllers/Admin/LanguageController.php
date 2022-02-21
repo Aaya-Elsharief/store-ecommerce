@@ -19,10 +19,11 @@ class LanguageController extends Controller
     }
 
     public function store(LanguageRequest $request){
+
         try {
             if (! $request -> has ('active'))
                 $request->request->add(['active' => 0]);
-            
+
             Language::create($request->except(['_token']));
             return redirect()->route('admin.languages')->with(['success' => 'تم إضافة اللغة بنجاح']);
         } catch (\Exception $ex) {

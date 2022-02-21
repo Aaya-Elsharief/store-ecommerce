@@ -28,6 +28,8 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="form-section"><i class="ft-home"></i> تحديث بيانات اللغة  </h4>
+                                    <hr style="height:2px;border-width:0;color:gray;background-color:Dimgrey">
+
 
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>

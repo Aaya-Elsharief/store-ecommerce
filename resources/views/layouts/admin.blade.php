@@ -72,8 +72,7 @@
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 @include('admin.includes.footer')
 
-@notify_js
-@notify_render
+
 
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('assets/admin/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
