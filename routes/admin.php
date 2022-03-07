@@ -55,6 +55,8 @@ Route::group([ 'namespace' => 'admin', 'middleware' =>'auth:admin'],function(){
 
         Route::get('delete/{id}',[MainCategoriesController::class, 'destroy']) -> name('admin.maincategories.delete');
 
+        Route::get('changeStatus/{id}',[MainCategoriesController::class, 'changeStatus']) -> name('admin.maincategories.changeStatus');
+
 
     });
 
