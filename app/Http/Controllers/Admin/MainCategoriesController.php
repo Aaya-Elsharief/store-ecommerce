@@ -8,6 +8,7 @@ use App\Models\Main_category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use mysql_xdevapi\Exception;
 
 class MainCategoriesController extends Controller
@@ -151,6 +152,65 @@ class MainCategoriesController extends Controller
 
     }
 
+    public function destroy($mainCategoryId){
+
+        try{
+
+            $mainCategory = Main_category::find($mainCategoryId);
+
+            if(!$mainCategoryId)
+                return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجودة']);
+
+
+            $vendors = $mainCategory -> vendors(); // from relation
+
+            if(isset ($vendors) && $vendors -> count() > 0){
+                return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم لا يمكن حذفه']);
+            }
+
+
+            $img =  Str::after($mainCategory ->photo, 'assets/');
+            $img = base_path('assets/'.$img);
+            unlink($img);
+
+
+            $mainCategory -> delete();
+
+            return redirect()->route('admin.maincategories')->with(['success' => 'تم حذف القسم بنجاح']);
+
+
+
+
+        }catch (\Exception $exception){
+
+            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطأ ما، يرجى المحاولة فيما بعد']);
+
+        }
+    }
+
+    public function changeStatus($mainCategoryId){
+
+        try{
+
+            $mainCategory = Main_category::find($mainCategoryId);
+
+            if(!$mainCategoryId)
+                return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجودة']);
+
+             $status = $mainCategory -> active == 0 ? 1:0;
+
+            $mainCategory -> update(['active' => $status]);
+
+
+            return redirect()->route('admin.maincategories')->with(['success' => 'تم تغيير حالة القسم بنجاح']);
+
+        }catch (\Exception $exception){
+            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطأ ما، يرجى المحاولة فيما بعد']);
+
+        }
+
+
+    }
 }
 
 
