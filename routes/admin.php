@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MainCategoriesController;
+use App\Http\Controllers\Admin\VendorsController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
 
@@ -58,6 +59,26 @@ Route::group([ 'namespace' => 'admin', 'middleware' =>'auth:admin'],function(){
     });
 
     ########################## End Main Categories Routes#############################
+
+    ########################## Begin vendors  Routes #############################
+    Route::group(['prefix' => 'vendors'], function(){
+
+        Route::get('/',[VendorsController::class, 'index']) -> name('admin.vendors'); //all languages
+        Route::get('create',[VendorsController::class, 'create']) -> name('admin.vendors.create');
+        Route::post('store',[VendorsController::class, 'store']) -> name('admin.vendors.store');
+
+        Route::get('edit/{id}',[VendorsController::class, 'edit']) -> name('admin.vendors.edit');
+        Route::post('update/{id}',[VendorsController::class, 'update']) -> name('admin.vendors.update');
+
+        Route::get('delete/{id}',[VendorsController::class, 'changeStatus']) -> name('admin.vendors.changestatus');
+
+
+    });
+
+    ########################## End vendors Routes#############################
+
+
+
 
 });
 
