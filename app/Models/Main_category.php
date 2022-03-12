@@ -42,6 +42,10 @@ class Main_category extends Model
         return $query -> select('id','translation_lang','translation_of','name','slug','photo','active');
     }
 
+    public function scopeDefaultCategory($query){
+        return $query -> where ('translation_of', 0);
+    }
+
 
     public function getActive(){
         return $this -> active ==1 ? 'مفعّل' : 'غير مفعّل';

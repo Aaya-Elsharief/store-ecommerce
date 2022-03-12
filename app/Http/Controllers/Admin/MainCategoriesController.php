@@ -18,6 +18,7 @@ class MainCategoriesController extends Controller
         $default_lang = get_default_lang();
 
         $categories = Main_category::where('translation_lang', $default_lang)->selection()->get();
+
         return view('admin.mainCategories.index', compact('categories'));
     }
 
@@ -95,10 +96,10 @@ class MainCategoriesController extends Controller
     public function edit($mainCategoryId)
     {
         //get specific categories with its tranlations
-         $mainCategory = Main_category::with('categories')
+         $mainCategory = Main_category::with('category_translations')
             ->selection()
             -> find($mainCategoryId);
-
+//return $mainCategory;
         if (!$mainCategory) {
             return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجودة']);
         }
