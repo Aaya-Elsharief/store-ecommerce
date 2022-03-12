@@ -151,8 +151,8 @@
                                                         <h4 class="form-section">   اللغات الأخرى </h4>
 
                                                         <ul class="nav nav-tabs">
-                                                            @isset($mainCategory -> categories)
-                                                                @foreach($mainCategory -> categories as $index => $category_trans)
+                                                            @isset($mainCategory -> category_translations)
+                                                                @foreach($mainCategory -> category_translations as $index => $category_trans)
                                                             <li class="nav-item">
                                                                 <a class="nav-link @if($index == 0) active @endif" id="base-tab1" data-toggle="tab" aria-controls="tab1"
                                                                     href="#tab1{{$index}}"
@@ -166,9 +166,9 @@
 
                                                         <div class="tab-content px-1 pt-1">
 
-                                                            @isset($mainCategory -> categories)
-                                                                @foreach($mainCategory -> categories as $index => $category_trans)
-
+                                                            @isset($mainCategory -> category_translations)
+                                                                @foreach($mainCategory -> category_translations as $index => $category_trans)
+                                                               
                                                                     <div role="tabpanel" class="tab-pane  @if($index ==  0) active  @endif  " id="tab1{{$index}}"
                                                                          aria-labelledby="homeLable-tab"
                                                                          aria-expanded="{{$index ==  0 ? 'true' : 'false'}}">

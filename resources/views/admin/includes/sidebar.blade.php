@@ -31,8 +31,8 @@
             <li class="nav-item"><a href=""><i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main"> الأقسام الرئيسية </span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">{{App\Models\Main_category::count()}}</span>
-                </a>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{App\Models\Main_category::defaultCategory() ->count()}}</span>
+
                 <ul class="menu-content">
                     <li class="active">
                         <a class="menu-item" href="{{route('admin.maincategories')}}"

@@ -103,7 +103,7 @@ return $exception;
                     'logo' => $filePath,
                 ]);
             }
-            
+
              $data = $request-> except('_token', 'id', 'photo', 'password');
 
             //password
