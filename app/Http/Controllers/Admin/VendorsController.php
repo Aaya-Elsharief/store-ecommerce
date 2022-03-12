@@ -10,6 +10,7 @@ use App\Notifications\VendorCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class VendorsController extends Controller
 {
@@ -49,8 +50,8 @@ class VendorsController extends Controller
                 'active' => $request -> active,
                 'password'=>$request -> password,
                 'category_id' => $request -> category_id,
-
-               // 'category_id'
+               'latitude' => $request -> latitude,
+               'longitude' => $request -> longitude,
             ]);
 
                 //notifications
@@ -60,7 +61,7 @@ class VendorsController extends Controller
             return redirect()->route('admin.vendors')->with(['success' => 'تم إضافة المتجر بنجاح']);
 
         }catch (\Exception $exception){
-
+return $exception;
             return redirect()->route('admin.vendors')->with(['error' => 'هناك خطا ما يرجي المحاوله فيما بعد']);
         }
 
@@ -102,11 +103,11 @@ class VendorsController extends Controller
                     'logo' => $filePath,
                 ]);
             }
-
-            $data = $request-> except('_token', 'id', 'photo', 'password');
+            
+             $data = $request-> except('_token', 'id', 'photo', 'password');
 
             //password
-            if ($request->has('password')) {
+            if ($request->has('password') && !is_null($request -> password)) {
                $data['password'] = $request -> password;
             }
 
@@ -128,7 +129,55 @@ class VendorsController extends Controller
         }
     }
 
-    public function changeStatus(){
+    public function destroy($id){
+
+    try{
+        $vendor = Vendor::selection() -> find($id);
+
+        if(!$vendor)
+            return redirect()->route('admin.vendors')->with(['error' => 'المتجر غير موجود، أو حدث خطأ ما']);
+
+
+
+        $img =  Str::after($vendor ->logo, 'assets/');
+        $img = base_path('assets/'.$img);
+        unlink($img);
+
+
+        $vendor -> delete();
+
+        return redirect()->route('admin.vendors')->with(['success' => 'تم حذف المتجر بنجاح']);
+    }catch (\Exception $exception){
+        return $exception;
+        return redirect()->route('admin.vendors')->with(['error' => 'حدث خطأ ما، يرجى المحاولة فيما بعد']);
+    }
+}
+
+
+
+    public function changeStatus($id){
+
+        try{
+
+            $vendor = Vendor::selection() -> find($id);
+
+            if(!$vendor)
+                return redirect()->route('admin.vendors')->with(['error' => 'المتجر غير موجود، أو حدث خطأ ما']);
+
+
+            $status = $vendor -> active == 0 ? 1:0;
+
+            $vendor -> update(['active' => $status]);
+
+
+            return redirect()->route('admin.vendors')->with(['success' => 'تم تغيير حالة المتجر بنجاح']);
+
+        }catch (\Exception $exception){
+            return redirect()->route('admin.vendors')->with(['error' => 'حدث خطأ ما، يرجى المحاولة فيما بعد']);
+
+        }
 
     }
+
+
 }

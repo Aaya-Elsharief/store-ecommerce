@@ -72,8 +72,9 @@ Route::group([ 'namespace' => 'admin', 'middleware' =>'auth:admin'],function(){
         Route::get('edit/{id}',[VendorsController::class, 'edit']) -> name('admin.vendors.edit');
         Route::post('update/{id}',[VendorsController::class, 'update']) -> name('admin.vendors.update');
 
-        Route::get('delete/{id}',[VendorsController::class, 'changeStatus']) -> name('admin.vendors.changestatus');
+        Route::get('delete/{id}',[VendorsController::class, 'destroy']) -> name('admin.vendors.delete');
 
+        Route::get('changeStatus/{id}',[VendorsController::class, 'changeStatus']) -> name('admin.vendors.changeStatus');
 
     });
 

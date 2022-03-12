@@ -22,7 +22,9 @@ class Vendor extends Model
         'active',
         'category_id',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'latitude',
+        'longitude'
     ];
 
     protected $hidden = [
@@ -31,7 +33,7 @@ class Vendor extends Model
     ];
 
     public function scopeSelection($query){
-        return $query -> select('id','category_id','name','logo','mobile','active','address','email');
+        return $query -> select('id','category_id','name','logo','mobile','active','address','email','latitude','longitude');
     }
 
     public function scopeActive($query){

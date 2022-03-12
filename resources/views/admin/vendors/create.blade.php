@@ -55,6 +55,9 @@
                                             @csrf
                                             <div class="form-body">
 
+                                                <input type="hidden" value="" id="latitude" name="latitude">
+                                                <input type="hidden" value="" id="longitude" name="longitude">
+
 
                                                 <div class = "row">
                                                     <div class="col-md-6">
