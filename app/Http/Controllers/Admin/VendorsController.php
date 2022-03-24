@@ -61,7 +61,7 @@ class VendorsController extends Controller
             return redirect()->route('admin.vendors')->with(['success' => 'تم إضافة المتجر بنجاح']);
 
         }catch (\Exception $exception){
-return $exception;
+
             return redirect()->route('admin.vendors')->with(['error' => 'هناك خطا ما يرجي المحاوله فيما بعد']);
         }
 
@@ -97,6 +97,11 @@ return $exception;
             //save img
             $filePath = "";
             if ($request->has('logo')) {
+
+                $img =  Str::after($vendor ->logo, 'assets/');
+                $img = base_path('assets/'.$img);
+                unlink($img);
+
                 $filePath = uploadImage('vendors', $request->logo);
                 Vendor::where('id', $id)
                     ->update([
@@ -123,7 +128,6 @@ return $exception;
 
         }catch (\Exception $exception){
             DB::rollBack();
-            return $exception;
             return redirect()->route('admin.vendors')->with(['error' => 'هناك خطا ما يرجي المحاوله فيما بعد']);
 
         }
@@ -148,7 +152,6 @@ return $exception;
 
         return redirect()->route('admin.vendors')->with(['success' => 'تم حذف المتجر بنجاح']);
     }catch (\Exception $exception){
-        return $exception;
         return redirect()->route('admin.vendors')->with(['error' => 'حدث خطأ ما، يرجى المحاولة فيما بعد']);
     }
 }

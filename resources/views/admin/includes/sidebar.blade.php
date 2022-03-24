@@ -5,12 +5,12 @@
 
             <li class="nav-item active">
                 <a href="{{route('admin.dashboard')}}">
-                    <i class="la la-mouse-pointer"></i>
+                    <i class="la la-home"></i>
                     <span class="menu-title" data-i18n="nav.add_on_drag_drop.main">الرئيسية </span>
                 </a>
             </li>
 
-            <li class="nav-item"><a href=""><i class="la la-home"></i>
+            <li class="nav-item"><a href=""><i class="la la-language"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">لغات الموقع </span>
                     <span
                         class="badge badge badge-info badge-pill float-right mr-2">{{App\Models\Language::count()}}</span>
@@ -32,7 +32,7 @@
                     <span class="menu-title" data-i18n="nav.dash.main"> الأقسام الرئيسية </span>
                     <span
                         class="badge badge badge-danger badge-pill float-right mr-2">{{App\Models\Main_category::defaultCategory() ->count()}}</span>
-
+                </a>
                 <ul class="menu-content">
                     <li class="active">
                         <a class="menu-item" href="{{route('admin.maincategories')}}"
@@ -44,7 +44,9 @@
                 </ul>
             </li>
 
-            <li class="nav-item"><a href=""><i class="la la-male"></i>
+
+
+            <li class="nav-item"><a href="">     <i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">المتاجر  </span>
                     <span
                         class="badge badge badge-success badge-pill float-right mr-2">{{\App\Models\Vendor::count()}}</span>
@@ -60,17 +62,18 @@
             </li>
 
 
-            <li class="nav-item"><a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الطلاب  </span>
+            <li class="nav-item"><a href=""><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main"> العلامات التجارية</span>
                     <span
-                        class="badge badge badge-warning  badge-pill float-right mr-2"></span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{App\Models\Brand::count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    <li class="active">
+                        <a class="menu-item" href="{{route('admin.brands')}}"
+                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
-                            طالب </a>
+                    <li><a class="menu-item" href="{{route('admin.brands.create')}}" data-i18n="nav.dash.crypto">إضافة
+                             علامة تجارية </a>
                     </li>
                 </ul>
             </li>

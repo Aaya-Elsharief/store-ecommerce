@@ -135,6 +135,10 @@ class MainCategoriesController extends Controller
           //save img
           $filePath = "";
           if ($request->has('photo')) {
+              $img =  Str::after($category ->photo, 'assets/');
+              $img = base_path('assets/'.$img);
+              unlink($img);
+
               $filePath = uploadImage('maincategories', $request->photo);
               Main_category::where('id', $mainCategoryId)->update([
                   'photo' => $filePath,
