@@ -56,15 +56,21 @@ class Main_category extends Model
       return  ( $val !== null) ? asset('assets/'.$val) : "";
     }
 
-    public function category_translations(){
-       return  $this -> hasMany(self::class,'translation_of');
-    }
 
 
 
     /////////  RELATIONS /////////////////
     public function vendors(){
         return $this -> hasMany('App\Models\Vendor','category_id','id');
+    }
+
+
+    public function category_translations(){
+        return  $this -> hasMany(self::class,'translation_of');
+    }
+
+    public function subCategories(){
+        return $this -> hasMany(Sub_category::class,'category_id','id');
     }
 
 

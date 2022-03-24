@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "adee5f8cb144a6065fce720f1a7d414f",
+    "content-hash": "b3b61ded5570624f0586cb81616b1417",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1639,20 +1639,20 @@
         },
         {
             "name": "mcamara/laravel-localization",
-            "version": "1.6.2",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcamara/laravel-localization.git",
-                "reference": "645819da9ef29f3ba7588d9b4598799caf0b2463"
+                "reference": "27565315c585e90d8d93aa06afd49d6a5992fe5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/645819da9ef29f3ba7588d9b4598799caf0b2463",
-                "reference": "645819da9ef29f3ba7588d9b4598799caf0b2463",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/27565315c585e90d8d93aa06afd49d6a5992fe5a",
+                "reference": "27565315c585e90d8d93aa06afd49d6a5992fe5a",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.2.0||~5.3.0||~5.4.0||~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0||^7.0||^8.0",
+                "laravel/framework": "~5.2.0||~5.3.0||~5.4.0||~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0||^7.0||^8.0||^9.0",
                 "php": ">=7.1.0"
             },
             "require-dev": {
@@ -1674,10 +1674,10 @@
                 }
             },
             "autoload": {
-                "classmap": [],
                 "psr-0": {
                     "Mcamara\\LaravelLocalization": "src/"
-                }
+                },
+                "classmap": []
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1699,7 +1699,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mcamara/laravel-localization/issues",
-                "source": "https://github.com/mcamara/laravel-localization/tree/1.6.2"
+                "source": "https://github.com/mcamara/laravel-localization/tree/v1.7.0"
             },
             "funding": [
                 {
@@ -1711,7 +1711,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-10-24T11:55:35+00:00"
+            "time": "2022-01-26T10:27:45+00:00"
         },
         {
             "name": "monolog/monolog",

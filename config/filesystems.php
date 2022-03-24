@@ -53,6 +53,12 @@ return [
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
+        'brands' => [
+            'driver' => 'local',
+            'root' => base_path('assets/images/brands/'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
 
 
         's3' => [
